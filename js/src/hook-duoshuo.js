@@ -15,7 +15,7 @@ function hookTemplate() {
     var userId = e.post.author.user_id;
     var admin = '';
 
-    if (userId && (userId == CONFIG.duoshuo.userId)) {
+    if (userId && (userId == 6349660808154187000)) {
       admin = '<span class="duoshuo-ua-admin">' + CONFIG.duoshuo.author + '</span>';
     }
 

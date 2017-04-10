@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[联想ideapad-flex14黑苹果之路]]></title>
+      <url>%2F2017%2F04%2F10%2FHackintosh-lenove-ideapad-flex14%2F</url>
+      <content type="text"><![CDATA[最近遇到了很多事情，真的是很多，可能是我能力不足，处理不过来吧，，还要加油才好。好了，希望被世界温柔以待。 Hackintosh，正式入门容我先安装个typora，用来写markdown。 $ brew cask install typora 准备之镜像flex14这台机子(配置图后面贴上)我安装了10.12.x后usb都识别在了3.0下，折腾了一下无果(暂时发现唯一的瑕疵就是QQ中看图放大后无法用鼠标移动看局部)，于是尝试装10.11.6，USB可以正常识别，如果有人知道如何解决这问题，欢迎再下方留言评论，谢谢。 镜像网上搜很多，质量参差不齐，可以自己做，我贴一个我用的镜像，也可以加QQ群获取。 今天太晚了，最近上火，嘴里都是火炮，明天接着写吧，早点休息。。。 未完待续，]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[打造自己的bash环境]]></title>
       <url>%2F2016%2F12%2F13%2Fbash%2F</url>
       <content type="text"><![CDATA[传说中的终极shell–zsh看到很多人都说zsh是神器,所以前些天安装体验了下，尤其是使用oh_my_zsh配置后，第一感觉是Cool,后来使用了agnoster主题和autojump后，简直爱不释手 ​但是问题也接着到来，话说 zsh 设置了 emulate sh 后是兼容 bash 的，然而在使用flyme patchrom的时候，在执行了 source build/environment.sh 后，有一行提示 1$ command not found: complete ​ 这就有点尴尬了，查了下资料，说是 complete 是 bash 的一个内建命令，而 zsh 也有自己的 compdef 来补全函数，[2016-12-31]完成参数补全,修改后的代码为: 123456789101112131415161718192021222324# Command "coron" complete|compdefif type complete &amp;&gt;/dev/null; then function __cmd_coron() &#123; local cur="$&#123;COMP_WORDS[COMP_CWORD]&#125;" case $COMP_CWORD in 0) ;; 1) local options="fire config newproject patchall fullota upgrade porting clean cleanall help" COMPREPLY=( $(compgen -W "$&#123;options&#125;" -- $&#123;cur&#125;) ) ;; 2) ;; esac &#125;complete -F __cmd_coron flymeelif type compdef &amp;&gt;/dev/null; then function __cmd_coron() &#123; compls="fire config newproject patchall fullota upgrade porting clean cleanall help" completions=($&#123;=compls&#125;) compadd -- $completions &#125;compdef __cmd_coron flymefi A community Bash framework–bash-it​ 顺着 agnoster 主题的藤，摸到了powerline主题的瓜,主要是这个配色我是非常喜欢的^_^,然后顺着 powerline 的藤，摸到了 bash-it 的瓜 ​ 这货也是挺强大的，自己带有一堆实用的 aliases , completion , plugins,也可以附加自己喜好的配置 1.显示所有的 aliases , completion , plugins ,只需要一句 1$ bash-it show aliases[completion or plugins] 2.同时可以简便的开启和关闭，只需要一句 1$ bash-it enable[disable] aliases[completion or plugin] 3.另外,也少不了搜索的功能，只需要 1$ bash-it searsh xxx 即可自动给出相应的分类后的结果，可谓是大快人心啊 具体细节还是前往bash-it查看吧 未完待续…]]></content>

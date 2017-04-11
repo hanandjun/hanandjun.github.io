@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/10/Hackintosh-lenove-ideapad-flex14/index.html">
 <meta property="og:site_name" content="Hs's Blog|爱与痛的边缘">
 <meta property="og:description" content="最近遇到了很多事情，真的是很多，可能是我能力不足，处理不过来吧，，还要加油才行。好了，希望被世界温柔以待。 Hackintosh，正式入门flex14这台机子(配置图后面贴上)我安装了10.12.x后usb都识别在了3.0下，折腾了一下无果(暂时发现唯一的瑕疵就是QQ中看图放大后无法用鼠标移动看局部)，于是尝试装10.11.6，USB可以正常使用。如果有人知道如何解决这问题，欢迎再下方留言评论，谢">
-<meta property="og:updated_time" content="2017-04-11T02:28:19.000Z">
+<meta property="og:updated_time" content="2017-04-11T02:42:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="联想ideapad-flex14黑苹果系统安装之路">
 <meta name="twitter:description" content="最近遇到了很多事情，真的是很多，可能是我能力不足，处理不过来吧，，还要加油才行。好了，希望被世界温柔以待。 Hackintosh，正式入门flex14这台机子(配置图后面贴上)我安装了10.12.x后usb都识别在了3.0下，折腾了一下无果(暂时发现唯一的瑕疵就是QQ中看图放大后无法用鼠标移动看局部)，于是尝试装10.11.6，USB可以正常使用。如果有人知道如何解决这问题，欢迎再下方留言评论，谢">
@@ -414,7 +414,52 @@
 <p>我先安装个typora，写markdown方便点。</p>
 <pre><code>$ brew cask install typora
 </code></pre><a id="more"></a>
-<p>型号一样，配置可能不一样，以下表的为例：<br>  部件             | 型号                | 说明<br> :————–: | :—————–: | :—————–: |<br> 有线网卡           | rtl8100            |                     |<br> 无线网卡           | AR956x             |<br> 核心显卡           | Intel HD4400       |<br> 独立显卡           | nvidia GT820m      |<br> 声卡              | ALC283              |<br> 蓝牙              | AR3012              |<br> CPU              | intel core i5 4200u | </p>
+<p>型号一样，配置可能不一样，以下表的为例：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">部件</th>
+<th style="text-align:center">型号</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">有线网卡</td>
+<td style="text-align:center">rtl8100</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">无线网卡</td>
+<td style="text-align:center">AR956x</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">核心显卡</td>
+<td style="text-align:center">Intel HD4400</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">独立显卡</td>
+<td style="text-align:center">nvidia GT820m</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">声卡</td>
+<td style="text-align:center">ALC283</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">蓝牙</td>
+<td style="text-align:center">AR3012</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">CPU</td>
+<td style="text-align:center">intel core i5 4200u</td>
+</tr>
+</tbody>
+</table>
 <p> 其他的，比如硬盘(有固态的没搞过，但方法是有的)，内存，电源，usb什么的就不列了，用到的时候说明一下。</p>
 <h2 id="准备之系统镜像"><a href="#准备之系统镜像" class="headerlink" title="准备之系统镜像"></a>准备之系统镜像</h2><p>镜像网上搜很多，质量参差不齐，可以自己做，我贴一个我用的10.11.6镜像,由ASIBA制作，在此表示感谢，<a href="https://pan.baidu.com/s/1hsBmX1M" target="_blank" rel="external">百度云传送门</a>,密码: a55f 。下载完毕后，把两个选中解压，得到镜像。</p>
 <p>10.12.4的镜像由阿才提供，在此表示感谢，目的地在<a href="https://pan.baidu.com/s/1hrJKjQ0" target="_blank" rel="external">百度云盘传送门</a>,密码：jmk9</p>
@@ -426,11 +471,10 @@
 <p>刻录完毕后。打开U盘，删掉clover&gt;&gt;driv64uefi目录下以csm开头的文件。然后配置clover.plist。这样U盘制作完毕。</p>
 <h2 id="准备之硬盘分区"><a href="#准备之硬盘分区" class="headerlink" title="准备之硬盘分区"></a>准备之硬盘分区</h2><p>需要准备两个地方，ESP分区和安装镜像的分区。</p>
 <ol>
-<li>esp分区：为硬盘引导分区，使用DiskGenius工具先备份下，以免出现问题无法恢复。</li>
-</ol>
-<p>要求分区&gt;=240M,如果不够，需要手动扩大。鉴于联想的机子，一般出厂为260M，所以省了不少事。</p>
-<ol>
-<li>安装镜像分区：从机子的任意分区压缩出一块分区来，不要太小(我分了100G)。先不要格式化磁盘，如果在后面的抹盘步骤找不到该分区的话，就来把它格成ntfs分区。</li>
+<li><p>esp分区：为硬盘引导分区，使用DiskGenius工具先备份下，以免出现问题无法恢复。要求分区&gt;=240M,如果不够，需要手动扩大。鉴于联想的机子，一般出厂为260M，所以省了不少事。</p>
+</li>
+<li><p>安装镜像分区：从机子的任意分区压缩出一块分区来，不要太小(我分了100G)。先不要格式化磁盘，如果在后面的抹盘步骤找不到该分区的话，就来把它格成ntfs分区。</p>
+</li>
 </ol>
 <h2 id="安装之bios设置"><a href="#安装之bios设置" class="headerlink" title="安装之bios设置"></a>安装之bios设置</h2><p>对于flex14，在BIOS中，需要调节以下几个地方：</p>
 <p>deep s3 sleep： 开启。用来mac下的睡眠，不然会重启；</p>
